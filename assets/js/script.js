@@ -97,21 +97,28 @@ console.log(generateUpper());
 console.log(generateNum());
 console.log(generateSpecial());
 
-for (var i=0; i < pwLength; i ++) {
-
-}
 
 //if users select boolean value of true then lowerOptions are included in the password
+//conditionals for For loop
 
-if (pwLength === 0) {
-    return "";
-}
+for (var i=0; i < pwLength; i ++) {
 
-if (pwLower = true) {
-    pwLength*num
-} else
+if (pwLower) {
+    var pwLower = random.lower();
+    
+  } 
+  else (pwUpper)
+    var pwUpper = random.upper()
+        
+    if (pwNum)
+      var pwNum = random.number ()
+  
+             else (pwSpecial) 
+          var pwSpecial = random.special ()
+  
+  }
 
-
+// i need to store all of this in an array and generate a password after that
 
 //Driver function. Check each condition, generate some sort of for loop,
 function generatePassword() {}
