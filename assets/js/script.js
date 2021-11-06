@@ -5,14 +5,25 @@ var pwLower = confirm("Do you want to add lower case characters?");
 var pwUpper = confirm("Do you want to add upper case characters?");
 var pwNum = confirm("Do you want to add numeric characters?");
 var pwSpecial = confirm("Do you want to add special characters?");
-var random = {
-  lower: generateLower,
-  upper: generateUpper,
-  special: generateSpecial,
-  number: generateNum,
-};
-function generateLower() {
-  var lowerOptions = [
+// var random = {
+//   // lower: generateLower,
+//   upper: generateUpper,
+//   special: generateSpecial,
+//   number: generateNum,
+
+
+  //these variables below generate my random characters
+  var lowerRandom = Math.floor(Math.random() * lowerOptions.length);
+  lowerOptions[lowerRandom];
+  var upperRandom = Math.floor(Math.random() * upperOptions.length);
+  upperOptions[upperRandom];
+  var numRandom = Math.floor(Math.random() * numOptions.length);
+  numOptions[numRandom];
+  var specialRandom = Math.floor(Math.random() * specialOptions.length);
+  specialOptions[specialRandom];
+  
+  function generatePassword(pwLength) {
+   var lowerOptions = [
     "a",
     "b",
     "c",
@@ -40,10 +51,6 @@ function generateLower() {
     "y",
     "z",
   ];
-  var lowerRandom = Math.floor(Math.random() * lowerOptions.length);
-  return lowerOptions[lowerRandom];
-}
-function generateUpper() {
   var upperOptions = [
     "A",
     "B",
@@ -72,19 +79,46 @@ function generateUpper() {
     "Y",
     "Z",
   ];
-  var upperRandom = Math.floor(Math.random() * upperOptions.length);
-  return upperOptions[upperRandom];
-}
-function generateNum() {
+ 
   var numOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var numRandom = Math.floor(Math.random() * numOptions.length);
-  return numOptions[numRandom];
-}
-function generateSpecial() {
+  
   var specialOptions = ["!", "@", "#", "$", "%", "^", "&", "*"];
-  var specialRandom = Math.floor(Math.random() * specialOptions.length);
-  return specialOptions[specialRandom];
-}
+
+  randPasswordArray[0] = lowerOptions;
+  randPasswordArray[1] = upperOptions;
+  randPasswordArray[2] = numOptions;
+  randPasswordArray[3] = specialOptions;
+  randPasswordArray = randPasswordArray.fill(allOptions, 4);
+  return 
+  
+  } 
+  function shuffleArray(array) {
+  var password = ""
+  for (var i=0; i = pwLength; i ++) {
+  
+  if (pwLower) {
+      var password = password + random.lower();
+      
+    } 
+    else (pwUpper)
+      var password = password + random.upper()
+          
+      if (pwNum)
+        var password = password + random.number ()
+    
+               else (pwSpecial) 
+            var password = password + random.special ()
+    
+    }
+  }
+  
+  // }
+  //   function generateUpper() {
+  
+  // function generateNum() {
+// function generateSpecial() {
+ 
+// }
 function countVer(pwLength) {
   if (pwLength >= 8 && pwLength <= 128) {
     return true;
@@ -92,42 +126,22 @@ function countVer(pwLength) {
     return false;
   }
 }
-console.log(generateLower());
-console.log(generateUpper());
-console.log(generateNum());
-console.log(generateSpecial());
-
 
 //if users select boolean value of true then lowerOptions are included in the password
 //conditionals for For loop
 
 // i need to store all of this in an array and generate a password after that
 
-//Driver function. Check each condition, generate some sort of for loop,
+//in this function i need an array of special characters into an array of possible characters.
 
-function generatePassword() {
-var password = ""
-for (var i=0; i < pwLength; i ++) {
 
-if (pwLower) {
-    var password = password + random.lower();
-    
-  } 
-  else (pwUpper)
-    var password = password + random.upper()
-        
-    if (pwNum)
-      var password = password + random.number ()
-  
-             else (pwSpecial) 
-          var password = password + random.special ()
-  
-  }
-}
 
-var generatePassword = [random.lower, random.upper, random.number, random.special]
+console.log("lowerOptions:" + lowerOptions[lowerRandom])
+console.log("upperOptions:" + upperOptions[upperRandom])
+console.log("numOptions:" + numOptions[numRandom])
+console.log("specialOptions:" + specialOptions[specialRandom])
+// console.log(generatePassword)
 
-console.log(generatePassword)
 
 // // Assignment Code
 // var generateBtn = document.querySelector("#generate");
