@@ -101,27 +101,31 @@ console.log(generateSpecial());
 //if users select boolean value of true then lowerOptions are included in the password
 //conditionals for For loop
 
-for (var i=0; i < pwLength; i ++) {
-
-if (pwLower) {
-    var pwLower = random.lower();
-    
-  } 
-  else (pwUpper)
-    var pwUpper = random.upper()
-        
-    if (pwNum)
-      var pwNum = random.number ()
-  
-             else (pwSpecial) 
-          var pwSpecial = random.special ()
-  
-  }
-
 // i need to store all of this in an array and generate a password after that
 
 //Driver function. Check each condition, generate some sort of for loop,
-function generatePassword() {}
+
+function generatePassword() {var password = ""
+for (var i=0; i < pwLength; i ++) {
+
+if (pwLower) {
+    var password = password + random.lower();
+    
+  } 
+  else (pwUpper)
+    var password = password + random.upper()
+        
+    if (pwNum)
+      var password = password + random.number ()
+  
+             else (pwSpecial) 
+          var password = password + random.special ()
+  
+  }console.log(password)
+}
+console.log(generatePassword)
+
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 // Write password to the #password input
@@ -133,6 +137,9 @@ function writePassword() {
 //create generate password function
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+
 // Prompt w/ validation to see how many characters they want (length of password) between 8 and 128 characters
 // Confirm - ask if they want special characters in the password
 // Confirm - uppercase
