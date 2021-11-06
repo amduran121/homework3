@@ -105,7 +105,8 @@ console.log(generateSpecial());
 
 //Driver function. Check each condition, generate some sort of for loop,
 
-function generatePassword() {var password = ""
+function generatePassword() {
+var password = ""
 for (var i=0; i < pwLength; i ++) {
 
 if (pwLower) {
@@ -121,22 +122,24 @@ if (pwLower) {
              else (pwSpecial) 
           var password = password + random.special ()
   
-  }console.log(password)
+  }
 }
+
+var generatePassword = [random.lower, random.upper, random.number, random.special]
+
 console.log(generatePassword)
 
-
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-  passwordText.value = password;
-}
+// // Assignment Code
+// var generateBtn = document.querySelector("#generate");
+// // Write password to the #password input
+// function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector("#password");
+//   passwordText.value = password;
+// }
 //create generate password function
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+// generateBtn.addEventListener("click", writePassword);
 
 
 
