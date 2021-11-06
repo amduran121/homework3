@@ -1,179 +1,103 @@
-var pwLength = prompt(
-  "Please pick a number between 8 and 128 for password length."
-);
-var pwLower = confirm("Do you want to add lower case characters?");
-var pwUpper = confirm("Do you want to add upper case characters?");
-var pwNum = confirm("Do you want to add numeric characters?");
-var pwSpecial = confirm("Do you want to add special characters?");
-// var random = {
-//   // lower: generateLower,
-//   upper: generateUpper,
-//   special: generateSpecial,
-//   number: generateNum,
+var generateBtn = document.querySelector("#generate");
 
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
 
-  //these variables below generate my random characters
-  var lowerRandom = Math.floor(Math.random() * lowerOptions.length);
-  lowerOptions[lowerRandom];
-  var upperRandom = Math.floor(Math.random() * upperOptions.length);
-  upperOptions[upperRandom];
-  var numRandom = Math.floor(Math.random() * numOptions.length);
-  numOptions[numRandom];
-  var specialRandom = Math.floor(Math.random() * specialOptions.length);
-  specialOptions[specialRandom];
-  
-  function generatePassword(pwLength) {
-   var lowerOptions = [
-    "a",
-    "b",
-    "c",
-    "d",
-    "e",
-    "f",
-    "g",
-    "h",
-    "i",
-    "j",
-    "k",
-    "l",
-    "m",
-    "n",
-    "o",
-    "p",
-    "q",
-    "r",
-    "s",
-    "t",
-    "u",
-    "v",
-    "w",
-    "x",
-    "y",
-    "z",
-  ];
-  var upperOptions = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
- 
-  var numOptions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  
-  var specialOptions = ["!", "@", "#", "$", "%", "^", "&", "*"];
+  passwordText.value = password;
 
-  randPasswordArray[0] = lowerOptions;
-  randPasswordArray[1] = upperOptions;
-  randPasswordArray[2] = numOptions;
-  randPasswordArray[3] = specialOptions;
-  randPasswordArray = randPasswordArray.fill(allOptions, 4);
-  return 
-  
-  } 
-  function shuffleArray(array) {
-  var password = ""
-  for (var i=0; i = pwLength; i ++) {
-  
-  if (pwLower) {
-      var password = password + random.lower();
-      
-    } 
-    else (pwUpper)
-      var password = password + random.upper()
-          
-      if (pwNum)
-        var password = password + random.number ()
-    
-               else (pwSpecial) 
-            var password = password + random.special ()
-    
+  // This function allows for the generation of the password
+  function generatePassword() {
+    alert("Please generate a password between 8 and 128 characters.");
+
+    var password = {
+      numbers: confirm("Would you like to include numbers?"),
+      upperCase: confirm("Would you like to include uppercase letters?"),
+      lowerCase: confirm("Would you like to include lowercase letters?"),
+      special: confirm("Would you like to include special letters?"),
+      length: acceptableLimit(
+        parseInt(
+          prompt("Choose a character count between 8 and 127 characters.")
+        )
+      ),
+    };
+//if logic loop to prevent the user from making a selection outside the proper range
+    function acceptableLimit(num) {
+      if (7 < num && num < 128) {
+        return num;
+      } else {
+        alert("Make a vaid selection.");
+      }
     }
-  }
-  
-  // }
-  //   function generateUpper() {
-  
-  // function generateNum() {
-// function generateSpecial() {
- 
-// }
-function countVer(pwLength) {
-  if (pwLength >= 8 && pwLength <= 128) {
-    return true;
-  } else {
-    return false;
+
+    if (
+      password.numbers === false &&
+      password.upperCase === false &&
+      password.lowerCase === false &&
+      password.special === false
+    ) {
+      alert("Please choose at least one character set.");
+    }
+
+    // output to the user so they know what their password contains
+    console.log("Numbers: " + password.numbers);
+    console.log("Upper Case Letters: " + password.upperCase);
+    console.log("Lower Case Letters: " + password.lowerCase);
+    console.log("Special Characters: " + password.special);
+    console.log(
+      "Your password is " + password.length + " characters in length"
+    );
+
+   //These are the arrays for the building of the password
+    var numbers = "1,2,3,4,5,6,7,8,9,0,";
+    var upperC = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,";
+    var lowerC = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,";
+    var special = "!,@,#,$,%,^,&,*,(,),<,>,?,{,},],[,:,;,";
+
+    let charSet = "";
+
+
+
+
+    if (password.numbers === true) {
+      charSet = charSet + numbers;
+    }
+
+    if (password.upperCase === true) {
+      charSet = charSet + upperC;
+    }
+
+    if (password.lowerCase === true) {
+      charSet = charSet + lowerC;
+    }
+
+    if (password.special === true) {
+      charSet = charSet + special;
+    }
+
+
+
+
+    
+    console.log(charSet);
+
+    // split string to select each piece of the array that is selected
+    finalCharset = charSet.split(",").filter((item) => item);
+
+    console.log(finalCharset);
+
+        let generatedPassword = "";
+    for (let i = 0; i < password.length; i++) {
+      getPass = Math.floor(Math.random() * finalCharset.length);
+      generatedPassword += finalCharset[getPass];
+    }
+
+    password = generatedPassword;
+    // return final password
+    return password;
   }
 }
 
-//if users select boolean value of true then lowerOptions are included in the password
-//conditionals for For loop
-
-// i need to store all of this in an array and generate a password after that
-
-//in this function i need an array of special characters into an array of possible characters.
-
-
-
-console.log("lowerOptions:" + lowerOptions[lowerRandom])
-console.log("upperOptions:" + upperOptions[upperRandom])
-console.log("numOptions:" + numOptions[numRandom])
-console.log("specialOptions:" + specialOptions[specialRandom])
-// console.log(generatePassword)
-
-
-// // Assignment Code
-// var generateBtn = document.querySelector("#generate");
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-//   passwordText.value = password;
-// }
-//create generate password function
-// Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
-
-
-// Prompt w/ validation to see how many characters they want (length of password) between 8 and 128 characters
-// Confirm - ask if they want special characters in the password
-// Confirm - uppercase
-//Confirm - lowercase
-//Confirm numeric
-// Validate that at least 1 of the 4 options for speical characters/etc is true
-// If false alert saying they need to pick one of these, then re-ask those 4 questions
-// If they pick one of them (1/4 = true) then generate password
-//Generate promps that pop up where you can type in how many characters you want to put in, do you want to include special characters? numberic characters? uppercase? how long? how long would be a promp, the others would be confirm
-//use that input from the user to create the password.
-//Use pseudocode - explain step by step in regular language so you can follow progress.
-//prompt user for length
-//promt user for all character selections to confirm all
-//error handling (did they enter a valid number)
-//error handling (did user select at least one option)
-//use inputs to generate password
-//return the password from the generate password function in either an alert or display in text box
-//you can leave the pseudo-code comments and write the particular thing underneath them so you know where you are and what each one does
-//gives you a path to follow to get to the end
-//use Math.floor() and Math.random() to generate random number
+// generates the button
+generateBtn.addEventListener("click", writePassword);
